@@ -1,71 +1,27 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-default fixed-top" id="mainNav">
-    <a class="navbar-brand" href="index.html"><img src="img/logo.png" data-retina="true" alt="" width="163" height="36"></a>
+    <a class="navbar-brand" href="index.html"><img src="img/admin_logo.png" data-retina="true" alt="" width="163" height="36"></a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" href="{{route('admin')}}">
+          <a class="nav-link" href="{{route('dashboard')}}">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">Dashboard</span>
           </a>
         </li>
-      <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
-          <a class="nav-link" href="{{route('messages')}}">
-            <i class="fa fa-fw fa-envelope-open"></i>
-            <span class="nav-link-text">Messages</span>
-          </a>
-        </li>
-      <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Bookings">
-          <a class="nav-link" href="{{ route('courses') }}">
-            <i class="fa fa-fw fa-archive"></i>
-            <span class="nav-link-text">Courses <span class="badge badge-pill badge-primary">6 New</span></span>
-          </a>
-        </li>
-      <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Reviews">
-          <a class="nav-link" href="{{ route('reviews') }}">
-            <i class="fa fa-fw fa-star"></i>
-            <span class="nav-link-text">Reviews</span>
-          </a>
-        </li>
-      <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Bookmarks">
-          <a class="nav-link" href="{{ route('bookmarks') }}">
-            <i class="fa fa-fw fa-heart"></i>
-            <span class="nav-link-text">Bookmarks</span>
-          </a>
-        </li>
-      <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Add listing">
-          <a class="nav-link" href="{{ route('addListing') }}">
-            <i class="fa fa-fw fa-plus-circle"></i>
-            <span class="nav-link-text">Add listing</span>
-          </a>
-        </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My profile">
+      <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My profile">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseProfile" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-wrench"></i>
-            <span class="nav-link-text">My profile</span>
+            <span class="nav-link-text">Masters</span>
           </a>
           <ul class="sidenav-second-level collapse" id="collapseProfile">
             <li>
-              <a href="{{route('userProfile')}}">User profile</a>
+              <a href="{{route('category.index')}}">Category</a>
             </li>
          <li>
-              <a href="{{route('teacherProfile')}}">Teacher profile</a>
-            </li>
-          </ul>
-        </li>
-      <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-gear"></i>
-            <span class="nav-link-text">Components</span>
-          </a>
-          <ul class="sidenav-second-level collapse" id="collapseComponents">
-            <li>
-              <a href="{{route('charts')}}">Charts</a>
-            </li>
-         <li>
-              <a href="{{route('tables')}}">Tables</a>
+              <a href="">Class</a>
             </li>
           </ul>
         </li>

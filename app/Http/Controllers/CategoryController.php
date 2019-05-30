@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Redirect;
 use App\Category;
 use Illuminate\Http\Request;
 
@@ -15,8 +16,9 @@ class CategoryController extends Controller
     public function index()
     {
         //
-
-        return view("admin.category");
+        $msg['msg'] = "";
+        $msg['msg_content'] = "";
+        return view("admin.category", compact("msg"));
     }
 
     /**
@@ -37,7 +39,21 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        $category = new Category;
+        $category->name = request('category');
+        $category->save();
+        // dd($category);
+
+        if($category) {
+            $msg['msg'] = "added";
+            $msg['msg_content'] = "Category Added Successfully.";
+        } else {
+            $msg['msg'] = "error";
+            $msg['msg_content'] = "Something went wrong. Please contact your administrator";
+        }
+        
+        return view('admin.category', compact('msg'));
     }
 
     /**
