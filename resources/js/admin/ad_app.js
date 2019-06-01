@@ -5,7 +5,7 @@
  */
 
 require('./admin');
-require('./admin-charts');
+// require('./admin-charts');
 
 window.Vue = require('vue');
 

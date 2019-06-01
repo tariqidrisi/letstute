@@ -12,10 +12,10 @@
 <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="img/apple-touch-icon-144x144-precomposed.png">
 
 <!-- Bootstrap core CSS-->
-<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+<link href="{{asset('vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
 <!-- Plugin styles -->
-<link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+<link href="{{asset('vendor/datatables/dataTables.bootstrap4.css')}}" rel="stylesheet">
 <!-- Main styles -->
 <!-- Icon fonts-->
 <!-- Your custom styles -->

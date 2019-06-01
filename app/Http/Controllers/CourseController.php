@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Redirect;
+use App\Course;
 use App\Category;
+use App\Division;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class CourseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +17,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $data = Category::get();
+        $data = Course::get();
         // dd($data);   
-        return view("admin.index_category", compact("data"));
+        return view("admin.index_course", compact("data"));
     }
 
     /**
@@ -27,9 +29,12 @@ class CategoryController extends Controller
      */
     public function create()
     {
+        $data['categories'] = Category::get();
+        $data['classes'] = Division::get();
         $msg['msg'] = "";
         $msg['msg_content'] = "";
-        return view("admin.category", compact('msg'));
+
+        return view("admin.course", compact('data', 'msg'));
     }
 
     /**
@@ -40,15 +45,19 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
-        $category = new Category;
-        $category->name = request('category');
-        $category->save();
-        // dd($category);
-
-        if($category) {
+        $course = new Course;
+        $course->name = request('course');
+        $course->price = request('price');
+        $course->description = request('description');
+        $course->duration = request('duration');
+        $course->likes = request('likes');
+        $course->category_id = request('category_id');
+        $course->class_id = request('class_id');
+        $course->save();
+        
+        if($course) {
             $msg['msg'] = "added";
-            $msg['msg_content'] = "Category Added Successfully.";
+            $msg['msg_content'] = "Class Added Successfully.";
         } else {
             $msg['msg'] = "error";
             $msg['msg_content'] = "Something went wrong. Please contact your administrator";
@@ -60,10 +69,10 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Category  $category
+     * @param  \App\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(Course $course)
     {
         //
     }
@@ -71,66 +80,67 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Category  $category
+     * @param  \App\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
-        $data = Category::where('id', $category->id)->first();
+        $data = Course::Where('id', $id)->first();
+        $categories = Category::get();
+        $classes = Division::get();
 
-        $msg['msg'] = "";
-        $msg['msg_content'] = "";
-        
-        return view("admin.edit_category", compact('data', 'msg'));
+        return view('admin.edit_course', compact('data', 'categories', 'classes'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Category  $category
+     * @param  \App\Course  $course
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        // dd($id);
-        $category = Category::find($id);
-        $category->name = $request->get('category');
-        $category->save();
+        $course = Course::find($id);
+        $course->name = $request->get('course');
+        $course->price = $request->get('price');
+        $course->description = $request->get('description');
+        $course->duration = $request->get('duration');
+        $course->likes = $request->get('likes');
+        $course->category_id = $request->get('category_id');
+        $course->class_id = $request->get('class_id');
+        $course->save();
 
-        if($category) {
+        if($course) {
             $msg['msg'] = "updated";
-            $msg['msg_content'] = "Category Updated Successfully.";
+            $msg['msg_content'] = "Course Updated Successfully.";
         } else {
             $msg['msg'] = "error";
             $msg['msg_content'] = "Something went wrong. Please contact your administrator";
         }
 
-        return Redirect::back()->with($msg);
-
+        return Redirect::back()->with($msg); 
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Category  $category
+     * @param  \App\Course  $course
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        // dd($id);
-        $category = Category::find($id);
-        $category->delete();
+        $course = Course::find($id);
+        $course->delete();
 
-        if($category) {
+        if($course) {
             $msg['msg'] = "delete";
-            $msg['msg_content'] = "Category Deleted Successfully.";
+            $msg['msg_content'] = "Class Deleted Successfully.";
         } else {
             $msg['msg'] = "error";
             $msg['msg_content'] = "Something went wrong. Please contact your administrator";
         }
 
         return Redirect::back()->with($msg);
-
     }
 }

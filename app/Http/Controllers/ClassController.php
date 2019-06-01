@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Redirect;
-use App\Category;
+use App\Division;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class ClassController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $data = Category::get();
+        $data = Division::get();
         // dd($data);   
-        return view("admin.index_category", compact("data"));
+        return view("admin.index_class", compact("data"));
     }
 
     /**
@@ -29,7 +29,7 @@ class CategoryController extends Controller
     {
         $msg['msg'] = "";
         $msg['msg_content'] = "";
-        return view("admin.category", compact('msg'));
+        return view("admin.class", compact('msg'));
     }
 
     /**
@@ -41,14 +41,13 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-        $category = new Category;
-        $category->name = request('category');
-        $category->save();
-        // dd($category);
-
-        if($category) {
+        $class = new Division;
+        $class->name = request('class');
+        $class->save();
+        
+        if($class) {
             $msg['msg'] = "added";
-            $msg['msg_content'] = "Category Added Successfully.";
+            $msg['msg_content'] = "Class Added Successfully.";
         } else {
             $msg['msg'] = "error";
             $msg['msg_content'] = "Something went wrong. Please contact your administrator";
@@ -60,10 +59,10 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Category  $category
+     * @param  \App\Division  $class
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(Division $class)
     {
         //
     }
@@ -71,36 +70,36 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Category  $category
+     * @param  \App\Division  $class
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(Division $class)
     {
-        $data = Category::where('id', $category->id)->first();
+        $data = Division::where('id', $class->id)->first();
 
         $msg['msg'] = "";
         $msg['msg_content'] = "";
         
-        return view("admin.edit_category", compact('data', 'msg'));
+        return view("admin.edit_class", compact('data', 'msg'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Category  $category
+     * @param  \App\Division  $class
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         // dd($id);
-        $category = Category::find($id);
-        $category->name = $request->get('category');
-        $category->save();
+        $class = Division::find($id);
+        $class->name = $request->get('class');
+        $class->save();
 
-        if($category) {
+        if($class) {
             $msg['msg'] = "updated";
-            $msg['msg_content'] = "Category Updated Successfully.";
+            $msg['msg_content'] = "Class Updated Successfully.";
         } else {
             $msg['msg'] = "error";
             $msg['msg_content'] = "Something went wrong. Please contact your administrator";
@@ -113,18 +112,18 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Category  $category
+     * @param  \App\Division  $class
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         // dd($id);
-        $category = Category::find($id);
-        $category->delete();
+        $class = Division::find($id);
+        $class->delete();
 
-        if($category) {
+        if($class) {
             $msg['msg'] = "delete";
-            $msg['msg_content'] = "Category Deleted Successfully.";
+            $msg['msg_content'] = "Class Deleted Successfully.";
         } else {
             $msg['msg'] = "error";
             $msg['msg_content'] = "Something went wrong. Please contact your administrator";

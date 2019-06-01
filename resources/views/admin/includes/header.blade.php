@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-default fixed-top" id="mainNav">
-    <a class="navbar-brand" href="index.html"><img src="img/admin_logo.png" data-retina="true" alt="" width="163" height="36"></a>
+    <a class="navbar-brand" href="index.html"><img src="{{asset('img/admin_logo.png')}}" data-retina="true" alt="" width="163" height="36"></a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -11,20 +11,26 @@
             <span class="nav-link-text">Dashboard</span>
           </a>
         </li>
-      <li class="nav-item" data-toggle="tooltip" data-placement="right" title="My profile">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseProfile" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-wrench"></i>
-            <span class="nav-link-text">Masters</span>
-          </a>
-          <ul class="sidenav-second-level collapse" id="collapseProfile">
-            <li>
-              <a href="{{route('category.index')}}">Category</a>
-            </li>
-         <li>
-              <a href="">Class</a>
-            </li>
-          </ul>
-        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Masters">
+            <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseProfile" data-parent="#exampleAccordion">
+              <i class="fa fa-fw fa-bars"></i>
+              <span class="nav-link-text">Masters</span>
+            </a>
+            <ul class="sidenav-second-level collapse" id="collapseProfile">
+              <li>
+                <a href="{{route('category.index')}}">Category</a>
+              </li>
+               <li>
+                    <a href="{{route('class.index')}}">Class</a>
+                </li>
+            </ul>
+          </li>
+          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Courses">
+            <a class="nav-link" href="{{route('course.index')}}">
+              <i class="fa fa-fw fa-book"></i>
+              <span class="nav-link-text">Courses</span>
+            </a>
+          </li>
       </ul>
       <ul class="navbar-nav sidenav-toggler">
         <li class="nav-item">

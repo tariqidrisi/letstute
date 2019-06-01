@@ -15,7 +15,6 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::resource('/category', 'CategoryController');
 
 // admin 
 Route::get('/dashboard', "AdminHomeController@index")->name('dashboard');
@@ -29,7 +28,11 @@ Route::get('/teacher-profile', "AdminHomeController@teacherProfile")->name("teac
 Route::get('/charts', "AdminHomeController@charts")->name("charts");
 Route::get('/tables', "AdminHomeController@tables")->name("tables");
 
+// resource controller
+Route::resource('/category', 'CategoryController');
+Route::resource('/class', 'ClassController');
+Route::resource('/course', 'CourseController');
+
 // admin login
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
