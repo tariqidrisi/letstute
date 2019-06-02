@@ -105,7 +105,7 @@
             <a href="#0" class="grid_item">
                <figure class="block-reveal tariq">
                   <div class="block-horizzontal"></div>
-                  <img src="{{ URL::asset("img/course_1.jpg") }}" class="img-fluid" alt="">
+                  <img src="{{ URL::asset('img/course_1.jpg') }}" class="img-fluid" alt="">
                   <div class="info">
                      <small><i class="ti-layers"></i>15 Programmes</small>
                      <h3>Mathematics</h3>
