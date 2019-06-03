@@ -26,23 +26,21 @@
          <li>
             <span><a href="#0">Courses</a></span>
             <ul>
-               <li><a href="courses-grid-sidebar">Mathematics</a></li>
-               <li><a href="courses-grid-sidebar">Accounting</a></li>
-               <li><a href="courses-grid-sidebar">Science</a></li>
-               <li><a href="courses-grid-sidebar">EVS</a></li>
-               <li><a href="courses-grid-sidebar">Value Education</a></li>
+               <?php
+                  $categories = DB::select('select id, name FROM categories');
+                  $classes = DB::select('select id, name FROM classes');
+               ?>
+               @foreach($categories as $category)
+                  <li><a href="{{route('filterCategory', $category->id)}}">{{$category->name}}</a></li>
+               @endforeach
             </ul>
          </li>
          <li>
             <span><a href="#0">Select CLASS</a></span>
             <ul>
-               <li><a href="courses-grid-sidebar">6th Std</a></li>
-               <li><a href="courses-grid-sidebar">7th Std</a></li>
-               <li><a href="courses-grid-sidebar">8th Std</a></li>
-               <li><a href="courses-grid-sidebar">9th Std</a></li>
-               <li><a href="courses-grid-sidebar">10th Std</a></li>
-               <li><a href="courses-grid-sidebar">11th Std</a></li>
-               <li><a href="courses-grid-sidebar">12th Std</a></li>
+               @foreach($classes as $class)
+                  <li><a href="{{route('filterClass', $class->id)}}">{{$class->name}}</a></li>
+               @endforeach
             </ul>
          </li>
          <li><span><a href="#0">Exam Help & TIPS</a></span></li>

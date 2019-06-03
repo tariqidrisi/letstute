@@ -83,6 +83,10 @@
 <!-- page -->
 <!-- COMMON SCRIPTS -->
 <script src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery.mmenu/5.3.1/js/jquery.mmenu.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/wow/0.1.12/wow.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
     <script src="{{ asset('js/app.js') }}"></script>
 <script type="text/javascript">
@@ -90,5 +94,3 @@
         $(".main-menu").trigger("open");
     });
 </script>
-</body>
-</html>

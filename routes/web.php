@@ -15,6 +15,11 @@ Route::get('/', function () {
     return view('index');
 });
 
+// frontend
+Route::get('/allCourses', 'CourseController@allCourses')->name('listCourses');
+Route::get('/category/{category_id}', 'CourseController@filterCategory')->name('filterCategory');
+Route::get('/class/{class_id}', 'CourseController@filterClass')->name('filterClass');
+
 
 // admin 
 Route::get('/dashboard', "AdminHomeController@index")->name('dashboard');

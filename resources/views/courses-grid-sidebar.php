@@ -22,7 +22,7 @@
 
 	<div id="page" class="theia-exception">
 
-  <?php include 'header.php'; ?>
+  <?php include 'includes/header.php'; ?>
 	<!-- /header -->
 
 	<main>

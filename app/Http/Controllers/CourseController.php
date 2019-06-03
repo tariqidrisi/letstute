@@ -143,4 +143,22 @@ class CourseController extends Controller
 
         return Redirect::back()->with($msg);
     }
+
+    public function allCourses()
+    {
+        // dd("sdfsdfsdf");
+        return view('courses-grid-sidebar');
+    }
+
+    public function filterCategory($category_id){
+        $courses = Course::where('category_id', $category_id)->get();
+        // dd($categories);
+        return view('courses-grid-sidebar', compact('courses'));
+    }
+
+    public function filterClass($class_id){
+        $courses = Course::where('class_id', $class_id)->get();
+        // dd($courses);
+        return view('courses-grid-sidebar', compact('courses'));
+    }
 }
