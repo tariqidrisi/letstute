@@ -4,7 +4,7 @@
    </div>
    <!-- /Preload -->
    <div id="logo">
-      <a href="index"><img src="img/logo.png" width="149" height="42" data-retina="true" alt=""></a>
+      <a href="index"><img src="{{ asset('img/logo.png')}}" width="149" height="42" data-retina="true" alt=""></a>
    </div>
    <ul id="top_menu">
       <li><a href="cart-1" class="cart">Cart</a></li>

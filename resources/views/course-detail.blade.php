@@ -1,29 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="LetsTute a modern educational">
-    <meta name="author" content="LetsTute">
-    <title>LetsTute</title>
-
-    <!-- Favicons-->
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" type="image/x-icon" href="img/apple-touch-icon-57x57-precomposed.png">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="img/apple-touch-icon-72x72-precomposed.png">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="img/apple-touch-icon-114x114-precomposed.png">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="img/apple-touch-icon-144x144-precomposed.png">
-    <?php include 'style.php'; ?>
-</head>
-
-<body>
-
-	<div id="page" class="theia-exception">
-    <?php include 'header.php'; ?>
-	<!-- /header -->
-
+@extends('layouts.app')
+@section('content')
 	<main>
 		<section id="hero_in" class="courses">
 			<div class="wrapper">
@@ -49,8 +25,7 @@
 
 						<section id="description">
 							<h2>Description</h2>
-							<p>Per consequat adolescens ex, cu nibh commune temporibus vim, ad sumo viris eloquentiam sed. Mea appareat omittantur eloquentiam ad, nam ei quas oportere democritum. Prima causae admodum id est, ei timeam inimicus sed. Sit an meis aliquam, cetero inermis vel ut. An sit illum euismod facilisis, tamquam vulputate pertinacia eum at.</p>
-							<h5>What will you learn</h5>
+							<p>{{$course_detail->description}}</h5>
 							<ul class="list_ok">
 								<li>
 									<h6>Suas summo id sed erat erant oporteat</h6>
@@ -94,7 +69,7 @@
 								<h2>Lessons</h2>
 								<ul>
 									<li>18 lessons</li>
-									<li>01:02:10</li>
+									<li>{{$course_detail->duration}}</li>
 								</ul>
 							</div>
 							<div id="accordion_lessons" role="tablist" class="add_bottom_45">
@@ -204,7 +179,7 @@
 								<a href="https://www.youtube.com/watch?v=LDgd_gUcqCw" class="video"><i class="arrow_triangle-right"></i><img src="http://via.placeholder.com/800x533/ccc/fff/course_1.jpg" alt="" class="img-fluid"><span>View course preview</span></a>
 							</figure>
 							<div class="price">
-								$29<span class="original_price"><em>$49</em>60% discount price</span>
+								${{$course_detail->price}}<!-- <span class="original_price"><em>$49</em>60% discount price</span> -->
 							</div>
 							<a href="cart-1" class="btn_1 full-width">Purchase</a>
 							<a href="#0" class="btn_1 full-width outline"><i class="icon_heart"></i> Add to wishlist</a>
@@ -226,6 +201,6 @@
 			<!-- /container -->
 		</div>
 		<!-- /bg_color_1 -->
-	</main>
 	<!--/main-->
-  <?php include 'footer.php'; ?>
+	</main>
+@stop

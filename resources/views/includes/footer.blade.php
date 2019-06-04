@@ -2,7 +2,7 @@
    <div class="container margin_120_95">
       <div class="row">
          <div class="col-lg-5 col-md-12 p-r-5">
-            <p><img src="img/logo.png" width="149" height="42" data-retina="true" alt=""></p>
+            <p><img src="{{ asset('img/logo.png')}}" width="149" height="42" data-retina="true" alt=""></p>
             <p>Let's tute (Universal Learning Aid) is an E-learning company based in Mumbai, India.<br><br>
                Our goal is to make some meaningful positive impact in education segment by providing quality education content to all students who want to explore, visualize and apply their learning to real life. We explain concepts in a very detailed and logical manner. We put focus on ‘self-learning’ and not teaching. Students need not mug up anything or try to remember things but they should be able to understand it in a way that the knowledge stays with them for life.<br><br>
                Office No 8 & 9, Let's tute, 1st Floor, Zehra Manzil, Old L.J. Road, 91, Above ICICI Bank, Opposite Paradise Cinema,Mahim (West), Mumbai 400016.

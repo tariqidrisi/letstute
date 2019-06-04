@@ -33,12 +33,12 @@ $classes = DB::select('select id, name FROM classes');
                </div>
             </li>
             <li>
-               <select name="orderby" class="selectbox">
+               <!-- <select name="orderby" class="selectbox">
                   <option value="">Category</option>
                   @foreach($categories as $category)
                   	<option value="{{$category->id}}">{{$category->name}}</option>
                   @endforeach                  
-               </select>
+               </select> -->
             </li>
          </ul>
       </div>
@@ -56,13 +56,13 @@ $classes = DB::select('select id, name FROM classes');
                      <ul>
                      	<li>
                            <label>
-                           <input type="checkbox" class="" style="opacity: 4;"> All <small>(945)</small>
+                           <input type="checkbox" name="all" class="checkAll" style="opacity: 4;"> All <small>(945)</small>
                            </label>
                         </li>
                      	@foreach($categories as $category)
                         <li>
                            <label>
-                           <input type="checkbox" class="{{ $category->id }} checkbox" style="opacity: 4;">
+                           <input type="checkbox" name="category[]" value="{{ $category->id }}" class="checkbox" style="opacity: 4;">
                               {{$category->name}} <small>(945)</small>
                            </label>
                         </li>
@@ -78,33 +78,8 @@ $classes = DB::select('select id, name FROM classes');
          </aside>
          <!-- /aside -->
          <div class="col-lg-9">
-            <div class="row" >
-
-            	@foreach($courses as $course)
-               <!-- /box_grid -->
-               <div class="col-md-6">
-                  <div class="box_grid wow">
-                     <figure class="block-reveal">
-                        <div class="block-horizzontal"></div>
-                        <a href="#0" class="wish_bt"></a>
-                        <a href="course-detail.html"><img src="http://via.placeholder.com/800x533/ccc/fff/course__list_2.jpg" class="img-fluid" alt=""></a>
-                        <div class="price">${{ $course->price }}</div>
-                        <div class="preview"><span>Preview course</span></div>
-                     </figure>
-                     <div class="wrapper">
-                        <small>Category</small>
-                        <h3>{{ $course->description }}</h3>
-                        <p>{{ $course->description }}</p>
-                        <div class="rating"><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i><i class="icon_star"></i> <small>(145)</small></div>
-                     </div>
-                     <ul>
-                        <li><i class="icon_clock_alt"></i> {{ $course->duration }}</li>
-                        <li><i class="icon_like"></i> 890</li>
-                        <li><a href="course-detail.html">Enroll now</a></li>
-                     </ul>
-                  </div>
-               </div>
-               @endforeach
+            <div class="row" id="filterCategory">
+            	@include("partials.courses-list")
                <!-- /box_grid -->
             </div>
             <!-- /row -->
@@ -149,13 +124,30 @@ $classes = DB::select('select id, name FROM classes');
 <!--/main-->
 @section('scripts')
 <script type="text/javascript">
-	alert("asdasda");
+	
+	// filter category 
 	$(".checkbox").click(function(){		
 	
-		$('input[type=checkbox]').each(function () {
-		    var sThisVal = (this.checked ? $(this).val() : "");
-		    console.log(sThisVal);
+		var filter = [];
+        $(':checkbox:checked').each(function(i){
+          filter[i] = $(this).val();
+        });
+
+        $.ajaxSetup({
+		    headers: {
+		        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		    }
 		});
+        $.post("{{route('filter')}}", {filter:filter}, function(data){
+        	$("#filterCategory").html(data);
+        });
+        
+	});
+
+	//checkall
+	$(".checkAll").change(function(){
+	    $('.checkbox').trigger('click');
+	    $('input:checkbox').not(this).prop('checked', this.checked);
 	});
 </script>
  @stop

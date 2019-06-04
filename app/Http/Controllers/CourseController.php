@@ -161,4 +161,20 @@ class CourseController extends Controller
         // dd($courses);
         return view('courses-grid-sidebar', compact('courses'));
     }
+
+    public function filter(Request $request) {
+        $filter =  request('filter');
+        $courses = Course::whereIn("category_id", $filter)->get();
+        // dd($courses);
+
+        return view("partials/courses-list", compact('courses'));
+
+    }
+
+    public function courseDetail($id){
+
+        $course_detail = Course::where('id', $id)->first();
+        // dd($id);
+        return view("course-detail", compact('course_detail'));
+    }
 }
